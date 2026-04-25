@@ -1,10 +1,10 @@
 # Pre-registered Falsification of Timing-Based Divergence Decomposition in KV-Cache Compression
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19757867.svg)](https://doi.org/10.5281/zenodo.19757867)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19757866.svg)](https://doi.org/10.5281/zenodo.19757866)
 
 **Status**: Pre-registered Two Regimes hypothesis falsified (H1 KILL, H3 KILL, H2 WEAK).
 **Framework**: RQZ. Related work: [LFCM V2](https://doi.org/10.5281/zenodo.19510356).
-**Zenodo DOI**: [10.5281/zenodo.19757867](https://doi.org/10.5281/zenodo.19757867).
+**Zenodo DOI** (concept, all versions): [10.5281/zenodo.19757866](https://doi.org/10.5281/zenodo.19757866) | v1 (this version): [10.5281/zenodo.19757867](https://doi.org/10.5281/zenodo.19757867).
 **Date**: 18 April 2026 (Phase 2 frozen) — 25 April 2026 (Zenodo deposit).
 
 ---
