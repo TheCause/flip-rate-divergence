@@ -1,0 +1,35 @@
+Pre-registered Falsification of Timing-Based Divergence Decomposition in KV-Cache Compression
+
+We report a pre-registered falsification of the "Two Regimes" hypothesis,
+which proposed that compression-induced output divergence in LLM inference
+decomposes into two (allegedly independent) axes: density (flip rate Phi)
+and timing (Position of Double-Flip PDP_2). The hypothesis was formalized ex ante in
+contract_validation.md v0.4 and frozen in git before any Phase 2 data
+collection. Data: 3 models (mistral-7B-Instruct, qwen-7B-Instruct,
+qwen-14B-Instruct), 2 datasets (synthetic, ShareGPT), 3 compression methods
+(uniform, recent, h2o_approx), 4 retentions (0.2, 0.5, 0.8, 0.9), N=50
+conversations per condition, T=128 generated tokens, RTX 3090 single GPU.
+Analysis strictly follows the pre-registered decision rules: Bonferroni-
+corrected Spearman for H1, KS-test per retention with strict all-pass rule
+for H2, and grouped 5-fold CV (group=conversation_id, 30 repeats) for H3
+with macro-F1 gain thresholds. Results: H1 KILL (rho < 0.3 on 4/9 cells,
+driven by `recent` on all 3 models), H2 WEAK (only mistral passes strict
+rule), H3 KILL (Delta macro-F1 < 0.05 on all 3 models; **strictly negative
+on qwen-7B, CI95 = [-0.028, -0.011]**, indicating PDP is unstable and
+occasionally harmful, not merely redundant). Outcome gate: PROJECT KILLED.
+The bi-axial decomposition is therefore falsified; what survives is a
+predominantly mono-dimensional density signal (Phi under `uniform`). One unexpected,
+not-pre-registered observation is logged: `recent` exhibits a non-monotonic
+"middle-gap" pattern on ShareGPT contexts across all 3 models, with Phi
+peaking around r=0.5. Combined with the loss of KL_mean as a continuous
+signal on qwen-7B-sharegpt (numerical underflow under 4-bit + eager + long
+context) and asymmetric ShareGPT context truncation across models (1024 vs
+512 tokens, imposed by 24 GB VRAM), this points away from "timing" and
+toward "context structure" (position + role + local density) as the
+plausible governing axis. A sketch of Hypothesis V2 along these lines is
+included as future work, not as a claim. The archive includes the frozen
+contract, code, raw results, environment dumps, and analysis logs
+sufficient to reproduce all results.
+
+Keywords: KV-cache compression, LLM inference, pre-registration,
+falsification, flip rate, StreamingLLM, H2O, open science, reproducibility.

@@ -1,0 +1,61 @@
+Loaded 6 result files:
+  lfcm_mistral-7b_sharegpt_phase2_mistral_sgpt.json
+  lfcm_mistral-7b_synthetic_phase2_mistral_synth.json
+  lfcm_qwen-14b_sharegpt_phase2_qwen14b_sgpt.json
+  lfcm_qwen-14b_synthetic_phase2_qwen14b_synth.json
+  lfcm_qwen-7b_sharegpt_phase2_qwen7b_sgpt.json
+  lfcm_qwen-7b_synthetic_phase2_qwen7b_synth.json
+Total rows: 3600
+
+=== H1: Spearman rho(1-retention, flip_rate) per (model, method) ===
+  mistral-7b  uniform     n=400  rho=+0.578  p_raw=0.0000  p_bonf=0.0000
+  mistral-7b  recent      n=400  rho=+0.194  p_raw=0.0001  p_bonf=0.0009
+  mistral-7b  h2o_approx  n=400  rho=+0.304  p_raw=0.0000  p_bonf=0.0000
+  qwen-14b    uniform     n=400  rho=+0.652  p_raw=0.0000  p_bonf=0.0000
+  qwen-14b    recent      n=400  rho=+0.197  p_raw=0.0001  p_bonf=0.0006
+  qwen-14b    h2o_approx  n=400  rho=+0.385  p_raw=0.0000  p_bonf=0.0000
+  qwen-7b     uniform     n=400  rho=+0.349  p_raw=0.0000  p_bonf=0.0000
+  qwen-7b     recent      n=400  rho=+0.073  p_raw=0.1437  p_bonf=1.0000
+  qwen-7b     h2o_approx  n=400  rho=+0.197  p_raw=0.0001  p_bonf=0.0007
+  --> H1 GLOBAL: {'verdict': 'KILL'}
+
+=== H2: KS(uniform, recent) PDP per retention, per model ===
+  mistral-7b  r=0.2  n_u=100  n_rec= 97  D=0.414  p_raw=0.0000  p_bonf=0.0000
+  mistral-7b  r=0.5  n_u=100  n_rec= 99  D=0.537  p_raw=0.0000  p_bonf=0.0000
+  mistral-7b  r=0.8  n_u= 98  n_rec= 97  D=0.295  p_raw=0.0002  p_bonf=0.0010
+  mistral-7b  r=0.9  n_u= 92  n_rec= 76  D=0.307  p_raw=0.0006  p_bonf=0.0022
+  mistral-7b: passes_all_retentions=True  loo_fragile=False
+    drop r=0.2 -> passes_after_drop=True
+    drop r=0.5 -> passes_after_drop=True
+    drop r=0.8 -> passes_after_drop=True
+    drop r=0.9 -> passes_after_drop=True
+  qwen-14b    r=0.2  n_u=100  n_rec=100  D=0.380  p_raw=0.0000  p_bonf=0.0000
+  qwen-14b    r=0.5  n_u= 99  n_rec=100  D=0.499  p_raw=0.0000  p_bonf=0.0000
+  qwen-14b    r=0.8  n_u= 94  n_rec=100  D=0.244  p_raw=0.0048  p_bonf=0.0194
+  qwen-14b    r=0.9  n_u= 93  n_rec= 61  D=0.277  p_raw=0.0053  p_bonf=0.0211
+  qwen-14b: passes_all_retentions=False  loo_fragile=False
+    drop r=0.2 -> passes_after_drop=False
+    drop r=0.5 -> passes_after_drop=False
+    drop r=0.8 -> passes_after_drop=False
+    drop r=0.9 -> passes_after_drop=False
+  qwen-7b     r=0.2  n_u= 98  n_rec= 99  D=0.106  p_raw=0.5916  p_bonf=1.0000
+  qwen-7b     r=0.5  n_u= 97  n_rec=100  D=0.253  p_raw=0.0028  p_bonf=0.0113
+  qwen-7b     r=0.8  n_u= 99  n_rec=100  D=0.426  p_raw=0.0000  p_bonf=0.0000
+  qwen-7b     r=0.9  n_u= 93  n_rec=100  D=0.412  p_raw=0.0000  p_bonf=0.0000
+  qwen-7b: passes_all_retentions=False  loo_fragile=False
+    drop r=0.2 -> passes_after_drop=True
+    drop r=0.5 -> passes_after_drop=False
+    drop r=0.8 -> passes_after_drop=False
+    drop r=0.9 -> passes_after_drop=False
+  --> H2 GLOBAL: {'verdict': 'WEAK'}
+
+=== H3: macro-F1 gain adding PDP (grouped CV by conv_id, 30 repeats) ===
+  mistral-7b  n=1158 groups=100  F1_A=0.388  F1_B=0.413  delta=+0.026  CI95=(0.01901947598868377, 0.031744054706616946)  (valid=30/30, errors=0)
+  qwen-14b    n=1143 groups=100  F1_A=0.412  F1_B=0.434  delta=+0.022  CI95=(0.015281726088593463, 0.030729423281734246)  (valid=30/30, errors=0)
+  qwen-7b     n=1182 groups=100  F1_A=0.389  F1_B=0.371  delta=-0.018  CI95=(-0.027838834655186613, -0.011349322393599572)  (valid=30/30, errors=0)
+  --> H3 GLOBAL: {'verdict': 'KILL'}
+
+=== OUTCOME GATING (contract v0.4) ===
+  PROJECT KILLED (H1 KILL)
+
+Report saved to phase2_final_analysis.json

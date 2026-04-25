@@ -1,0 +1,15 @@
+{
+  "seed": 42,
+  "n_total": 100,
+  "n_selected": 20,
+  "selection_method": "numpy.random.default_rng(seed=42).choice(100, size=20, replace=False)",
+  "indices": [7, 8, 12, 17, 36, 45, 47, 49, 54, 61, 63, 68, 71, 73, 75, 83, 84, 86, 89, 94],
+  "conversation_ids": [
+    "synth_0007", "synth_0008", "synth_0012", "synth_0017",
+    "synth_0036", "synth_0045", "synth_0047", "synth_0049",
+    "synth_0054", "synth_0061", "synth_0063", "synth_0068",
+    "synth_0071", "synth_0073", "synth_0075", "synth_0083",
+    "synth_0084", "synth_0086", "synth_0089", "synth_0094"
+  ],
+  "notes": "These indices are frozen at contract v0.4 freeze time and constitute the pre-registered Phase 0bis sample. Any replication must use this exact list. Generated from the synthetic LFCM V2 dataset (100 conversations total), selected via deterministic numpy RNG with seed=42."
+}

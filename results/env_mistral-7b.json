@@ -1,0 +1,29 @@
+{
+  "model_name_cli": "mistral-7b",
+  "model_id": "mistralai/Mistral-7B-Instruct-v0.3",
+  "dataset": "sharegpt",
+  "indices_file": null,
+  "n_conversations": 50,
+  "T": 128,
+  "methods": [
+    "uniform",
+    "recent",
+    "h2o_approx"
+  ],
+  "retentions": [
+    0.2,
+    0.5,
+    0.8,
+    0.9
+  ],
+  "load_in_4bit": true,
+  "save_hidden": false,
+  "save_logits_topk": false,
+  "torch_version": "2.10.0+cu128",
+  "transformers_version": "4.57.6",
+  "cuda_available": true,
+  "cuda_device": "NVIDIA GeForce RTX 3090",
+  "dtype": "nf4",
+  "seed_torch": 42,
+  "deterministic": true
+}
